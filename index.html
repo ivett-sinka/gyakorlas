@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sinka Ivett - UI/UX Designer | Hamarosan</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #ffffff;
+            overflow: hidden;
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+
+        /* Animated Gradient Background */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0e2d71, #c40082, #0e2d71);
+            background-size: 400% 400%;
+            animation: gradientMove 15s ease infinite;
+            z-index: -1;
+        }
+
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Overlay for depth */
+        .background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 50%, rgba(196, 0, 130, 0.3), transparent 50%),
+                        radial-gradient(circle at 70% 50%, rgba(14, 45, 113, 0.3), transparent 50%);
+            animation: overlayPulse 10s ease-in-out infinite;
+        }
+
+        @keyframes overlayPulse {
+            0%, 100% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* Main Container */
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Typography */
+        h1 {
+            font-family: 'Montserrat', sans-serif; /* Nexa alternative */
+            font-weight: 900;
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        h2 {
+            font-family: 'Montserrat', sans-serif; /* Nexa alternative */
+            font-weight: 700;
+            font-size: clamp(1.5rem, 4vw, 3rem);
+            letter-spacing: -0.01em;
+            margin-bottom: 3rem;
+            animation: fadeInUp 1.2s ease-out;
+            opacity: 0.95;
+        }
+
+        .main-title {
+            display: inline-block;
+        }
+
+        .name {
+            background: linear-gradient(90deg, #ffffff, #c40082, #ffffff);
+            background-size: 200% auto;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 3s linear infinite;
+        }
+
+        @keyframes shimmer {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        p {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            font-weight: 400;
+            line-height: 1.8;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            animation: fadeInUp 1.4s ease-out;
+            opacity: 0.9;
+        }
+
+        .subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(0.9rem, 2vw, 1.2rem);
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #c40082;
+            margin-top: 3rem;
+            animation: fadeInUp 1.6s ease-out;
+            position: relative;
+            display: inline-block;
+            padding: 0 2rem;
+        }
+
+        .subtitle::before,
+        .subtitle::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #c40082, transparent);
+        }
+
+        .subtitle::before {
+            left: -70px;
+        }
+
+        .subtitle::after {
+            right: -70px;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Floating dots decoration */
+        .dots {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .dot {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .dot:nth-child(1) {
+            left: 10%;
+            top: 20%;
+            animation-delay: 0s;
+            animation-duration: 15s;
+        }
+
+        .dot:nth-child(2) {
+            left: 80%;
+            top: 30%;
+            animation-delay: 2s;
+            animation-duration: 18s;
+        }
+
+        .dot:nth-child(3) {
+            left: 20%;
+            top: 70%;
+            animation-delay: 4s;
+            animation-duration: 20s;
+        }
+
+        .dot:nth-child(4) {
+            left: 90%;
+            top: 60%;
+            animation-delay: 1s;
+            animation-duration: 16s;
+        }
+
+        .dot:nth-child(5) {
+            left: 50%;
+            top: 10%;
+            animation-delay: 3s;
+            animation-duration: 22s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.3;
+            }
+            50% {
+                transform: translate(50px, 50px) scale(1.5);
+                opacity: 0.6;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .subtitle::before,
+            .subtitle::after {
+                display: none;
+            }
+
+            .container {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Optional: Add a subtle vignette effect */
+        .vignette {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            box-shadow: inset 0 0 200px rgba(0, 0, 0, 0.3);
+            pointer-events: none;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="background"></div>
+
+    <!-- Floating Dots Decoration -->
+    <div class="dots">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+    </div>
+
+    <!-- Vignette Effect -->
+    <div class="vignette"></div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1 class="main-title">
+            Hello!<br>
+            <span class="name">Sinka Ivett</span> vagyok
+        </h1>
+
+        <h2>A weboldalam készül,<br>hamarosan találkozunk!</h2>
+
+        <p>
+            Brand stratégiától a kész felületig átgondolt dizájnnal<br>
+            fogom átalakítani digitális jelenléted.
+        </p>
+
+        <div class="subtitle">UI/UX és Webdesign</div>
+    </div>
+</body>
+</html>
