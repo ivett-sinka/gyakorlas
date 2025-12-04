@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery - Húzható Carousel</title>
+    <link rel="stylesheet" href="photo-gallery.css">
+    <style>
+        :root {
+            --dark: #1a1a1a;
+            --txt-p: #2d2d2d;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #0a0a0a;
+        }
+
+        .content-box {
+            width: 100%;
+        }
+
+        h2 {
+            color: #ffffff;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .spacer {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Gallery Section -->
+    <section class="photo-gallery-section content-box">
+        <div class="gallery-container">
+            <h2>Pillanatok a tréningekről</h2>
+
+            <!-- Infinite Slider -->
+            <div class="slider-wrapper">
+                <div class="slider-track">
+                    <!-- Gallery Items -->
+                    <div class="gallery-item" data-index="0">
+                        <img src="https://picsum.photos/348/259?random=1" alt="Tréning pillanat 1">
+                        <div class="gallery-overlay">
+                            <button class="gallery-zoom-btn" aria-label="Kép nagyítása">
+                                <span class="plus-icon">+</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-index="1">
+                        <img src="https://picsum.photos/348/259?random=2" alt="Tréning pillanat 2">
+                        <div class="gallery-overlay">
+                            <button class="gallery-zoom-btn" aria-label="Kép nagyítása">
+                                <span class="plus-icon">+</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-index="2">
+                        <img src="https://picsum.photos/348/259?random=3" alt="Tréning pillanat 3">
+                        <div class="gallery-overlay">
+                            <button class="gallery-zoom-btn" aria-label="Kép nagyítása">
+                                <span class="plus-icon">+</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-index="3">
+                        <img src="https://picsum.photos/348/259?random=4" alt="Tréning pillanat 4">
+                        <div class="gallery-overlay">
+                            <button class="gallery-zoom-btn" aria-label="Kép nagyítása">
+                                <span class="plus-icon">+</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-index="4">
+                        <img src="https://picsum.photos/348/259?random=5" alt="Tréning pillanat 5">
+                        <div class="gallery-overlay">
+                            <button class="gallery-zoom-btn" aria-label="Kép nagyítása">
+                                <span class="plus-icon">+</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-index="5">
+                        <img src="https://picsum.photos/348/259?random=6" alt="Tréning pillanat 6">
+                        <div class="gallery-overlay">
+                            <button class="gallery-zoom-btn" aria-label="Kép nagyítása">
+                                <span class="plus-icon">+</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Cloned items for seamless infinite scroll -->
+                    <div class="gallery-item" data-index="0">
+                        <img src="https://picsum.photos/348/259?random=1" alt="Tréning pillanat 1">
+                        <div class="gallery-overlay">
+                            <button class="gallery-zoom-btn" aria-label="Kép nagyítása">
+                                <span class="plus-icon">+</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-index="1">
+                        <img src="https://picsum.photos/348/259?random=2" alt="Tréning pillanat 2">
+                        <div class="gallery-overlay">
+                            <button class="gallery-zoom-btn" aria-label="Kép nagyítása">
+                                <span class="plus-icon">+</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-index="2">
+                        <img src="https://picsum.photos/348/259?random=3" alt="Tréning pillanat 3">
+                        <div class="gallery-overlay">
+                            <button class="gallery-zoom-btn" aria-label="Kép nagyítása">
+                                <span class="plus-icon">+</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-index="3">
+                        <img src="https://picsum.photos/348/259?random=4" alt="Tréning pillanat 4">
+                        <div class="gallery-overlay">
+                            <button class="gallery-zoom-btn" aria-label="Kép nagyítása">
+                                <span class="plus-icon">+</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-index="4">
+                        <img src="https://picsum.photos/348/259?random=5" alt="Tréning pillanat 5">
+                        <div class="gallery-overlay">
+                            <button class="gallery-zoom-btn" aria-label="Kép nagyítása">
+                                <span class="plus-icon">+</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-index="5">
+                        <img src="https://picsum.photos/348/259?random=6" alt="Tréning pillanat 6">
+                        <div class="gallery-overlay">
+                            <button class="gallery-zoom-btn" aria-label="Kép nagyítása">
+                                <span class="plus-icon">+</span>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div style="height:144px" aria-hidden="true" class="wp-block-spacer spacer"></div>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-backdrop"></div>
+        <div class="lightbox-content">
+            <button class="lightbox-close" aria-label="Bezárás">
+                <span class="close-icon">×</span>
+            </button>
+            <button class="lightbox-nav lightbox-prev" aria-label="Előző kép">
+                <svg class="nav-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M15 18l-6-6 6-6"/>
+                </svg>
+            </button>
+
+            <div class="lightbox-image-container">
+                <img src="" alt="" id="lightbox-image">
+            </div>
+
+            <button class="lightbox-nav lightbox-next" aria-label="Következő kép">
+                <svg class="nav-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 18l6-6-6-6"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <script src="photo-gallery.js"></script>
+</body>
+</html>
