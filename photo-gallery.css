@@ -1,0 +1,362 @@
+/* ===================================
+   Photo Gallery Section
+   =================================== */
+
+/* Gallery Section */
+.photo-gallery-section {
+    width: 100%;
+    padding: 80px 0;
+    background-color: var(--dark);
+    overflow: hidden;
+}
+
+.gallery-container {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.gallery-heading {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+/* ===================================
+   Infinite Slider
+   =================================== */
+
+.slider-wrapper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    cursor: grab;
+    user-select: none;
+}
+
+.slider-wrapper:active {
+    cursor: grabbing;
+}
+
+.slider-track {
+    display: flex;
+    gap: 30px;
+    animation: slide 40s linear infinite;
+    will-change: transform;
+}
+
+/* Pause animation on hover */
+.slider-track:hover {
+    animation-play-state: paused;
+}
+
+/* Infinite scroll animation */
+@keyframes slide {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Gallery Item */
+.gallery-item {
+    flex-shrink: 0;
+    width: 348px;
+    height: 259px;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: filter 0.4s ease;
+}
+
+/* Grayscale on hover */
+.gallery-item:hover img {
+    filter: grayscale(100%);
+}
+
+/* ===================================
+   Overlay with + Button
+   =================================== */
+
+.gallery-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.gallery-zoom-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.gallery-zoom-btn:hover {
+    transform: scale(1.1);
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.plus-icon {
+    font-size: 40px;
+    font-weight: 300;
+    color: #000000;
+    line-height: 1;
+}
+
+/* ===================================
+   Lightbox Modal
+   =================================== */
+
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.lightbox.active {
+    display: flex;
+    opacity: 1;
+}
+
+.lightbox-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1;
+}
+
+.lightbox-content {
+    position: relative;
+    z-index: 2;
+    max-width: 90vw;
+    max-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox-image-container {
+    max-width: 100%;
+    max-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#lightbox-image {
+    max-width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+}
+
+/* ===================================
+   Lightbox Close Button (Animated X)
+   =================================== */
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 3;
+}
+
+.lightbox-close:hover {
+    background-color: #f0f0f0;
+    transform: rotate(90deg);
+}
+
+.close-icon {
+    font-size: 36px;
+    font-weight: 300;
+    color: var(--txt-p);
+    line-height: 1;
+    transition: transform 0.3s ease;
+}
+
+
+/* ===================================
+   Lightbox Navigation Arrows
+   =================================== */
+
+.lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 50px;
+    height: 50px;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*transition: all 0.3s ease;*/
+}
+
+.lightbox-nav:hover {
+    background-color: #f0f0f0;
+    /*transform: scale(1.1);*/
+}
+
+.lightbox-prev {
+    left: 40px;
+}
+
+.lightbox-next {
+    right: 40px;
+}
+
+.nav-arrow {
+    width: 24px;
+    height: 24px;
+    color: #2d2d2d;
+}
+
+
+
+/* ===================================
+   Responsive Design
+   =================================== */
+
+@media (max-width: 768px) {
+    .gallery-heading {
+        font-size: 32px;
+        margin-bottom: 40px;
+    }
+
+    .gallery-item {
+        width: 280px;
+        height: 210px;
+    }
+
+    .slider-track {
+        gap: 20px;
+    }
+
+    .gallery-zoom-btn {
+        width: 50px;
+        height: 50px;
+    }
+
+    .plus-icon {
+        font-size: 32px;
+    }
+
+    .lightbox-nav {
+        width: 50px;
+        height: 50px;
+    }
+
+    .lightbox-prev {
+        left: 20px;
+    }
+
+    .lightbox-next {
+        right: 20px;
+    }
+
+    .nav-arrow {
+        font-size: 40px;
+    }
+
+    .lightbox-close {
+        width: 45px;
+        height: 45px;
+        top: 15px;
+        right: 15px;
+    }
+
+    .close-icon {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .photo-gallery-section {
+        padding: 60px 0;
+    }
+
+    .gallery-heading {
+        font-size: 28px;
+        margin-bottom: 30px;
+        padding: 0 20px;
+    }
+
+    .gallery-item {
+        width: 240px;
+        height: 180px;
+    }
+
+    .slider-track {
+        gap: 15px;
+        animation-duration: 30s;
+    }
+}
+
+/* ===================================
+   Utility Classes
+   =================================== */
+
+.no-scroll {
+    overflow: hidden;
+}
