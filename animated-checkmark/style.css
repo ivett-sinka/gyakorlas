@@ -1,0 +1,210 @@
+/**
+ * Animált Pipa Ikon - Vonalvezetés Animáció
+ * Kör először rajzolódik, majd a pipa
+ */
+
+/* ===================================
+   Alapértelmezett stílusok
+   =================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    color: #ffffff;
+}
+
+.container {
+    max-width: 800px;
+    width: 100%;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+p {
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+    opacity: 0.9;
+}
+
+/* ===================================
+   Icon Wrapper
+   =================================== */
+
+.icon-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3rem 0;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.animated-checkmark {
+    width: 200px;
+    height: auto;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* ===================================
+   SVG Animáció - Stroke Drawing
+   =================================== */
+
+/* Kör elem */
+.checkmark-circle {
+    stroke-dasharray: 1072; /* Kör kerülete: 2 * PI * r ≈ 1072 */
+    stroke-dashoffset: 1072;
+    transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Pipa elem */
+.checkmark-check {
+    stroke-dasharray: 250;
+    stroke-dashoffset: 250;
+    transition: stroke-dashoffset 0.8s cubic-bezier(0.4, 0, 0.2, 1) 1.5s; /* 1.5s késleltetés */
+}
+
+/* ===================================
+   Animáció Trigger
+   =================================== */
+
+/* Amikor az 'animate' class hozzáadódik */
+.animated-checkmark.animate {
+    opacity: 1;
+}
+
+.animated-checkmark.animate .checkmark-circle {
+    stroke-dashoffset: 0; /* Kör rajzolódik */
+}
+
+.animated-checkmark.animate .checkmark-check {
+    stroke-dashoffset: 0; /* Pipa rajzolódik */
+}
+
+/* ===================================
+   Gomb stílus
+   =================================== */
+
+.replay-btn {
+    padding: 15px 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    margin-top: 2rem;
+}
+
+.replay-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.8);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.replay-btn:active {
+    transform: translateY(0);
+}
+
+/* ===================================
+   Info szekció
+   =================================== */
+
+.info {
+    margin-top: 4rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    text-align: left;
+}
+
+.info h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.info ul {
+    list-style: none;
+    padding: 0;
+}
+
+.info ul li {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+    position: relative;
+    line-height: 1.6;
+}
+
+.info ul li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #caa961;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.info ul li strong {
+    color: #caa961;
+}
+
+/* ===================================
+   Responsive
+   =================================== */
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    .animated-checkmark {
+        width: 150px;
+    }
+
+    .info ul li {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .animated-checkmark {
+        width: 120px;
+    }
+
+    .icon-wrapper {
+        padding: 1rem;
+    }
+
+    .info {
+        padding: 1.5rem;
+    }
+}
