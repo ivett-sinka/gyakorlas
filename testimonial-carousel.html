@@ -1,0 +1,81 @@
+<style>
+.tc-wrap{max-width:600px;margin:0 auto;overflow:hidden;position:relative;font-family:inherit}
+.tc-wrap input[type="radio"]{display:none}
+.tc-track{display:flex;transition:transform .5s ease}
+.tc-slide{min-width:100%;box-sizing:border-box;padding:32px 48px;text-align:center}
+.tc-slide p{color:#555;font-size:15px;line-height:1.6;margin:0 0 16px;font-style:italic}
+.tc-slide .tc-name{font-weight:600;color:#333;font-size:14px;margin:0}
+
+/* Arrows */
+.tc-arrow{position:absolute;top:50%;transform:translateY(-50%);width:28px;height:28px;cursor:pointer;z-index:2;display:none;align-items:center;justify-content:center}
+.tc-arrow::after{content:'';display:block;width:10px;height:10px;border-top:2px solid #999;border-right:2px solid #999}
+.tc-prev{left:4px}.tc-prev::after{transform:rotate(-135deg)}
+.tc-next{right:4px}.tc-next::after{transform:rotate(45deg)}
+
+/* Dots */
+.tc-dots{display:flex;justify-content:center;gap:8px;margin-top:16px}
+.tc-dot{width:10px;height:10px;border-radius:50%;border:2px solid #bbb;background:transparent;cursor:pointer;transition:background .3s,border-color .3s;display:block}
+
+/* Slide 1 active */
+#tc1:checked ~ .tc-track{transform:translateX(0)}
+#tc1:checked ~ .tc-dots label[for="tc1"]{background:#888;border-color:#888}
+#tc1:checked ~ label.tc-next[for="tc2"]{display:flex}
+
+/* Slide 2 active */
+#tc2:checked ~ .tc-track{transform:translateX(-100%)}
+#tc2:checked ~ .tc-dots label[for="tc2"]{background:#888;border-color:#888}
+#tc2:checked ~ label.tc-prev[for="tc1"]{display:flex}
+#tc2:checked ~ label.tc-next[for="tc3"]{display:flex}
+
+/* Slide 3 active */
+#tc3:checked ~ .tc-track{transform:translateX(-200%)}
+#tc3:checked ~ .tc-dots label[for="tc3"]{background:#888;border-color:#888}
+#tc3:checked ~ label.tc-prev[for="tc2"]{display:flex}
+#tc3:checked ~ label.tc-next[for="tc4"]{display:flex}
+
+/* Slide 4 active */
+#tc4:checked ~ .tc-track{transform:translateX(-300%)}
+#tc4:checked ~ .tc-dots label[for="tc4"]{background:#888;border-color:#888}
+#tc4:checked ~ label.tc-prev[for="tc3"]{display:flex}
+</style>
+
+<div class="tc-wrap">
+  <input type="radio" name="tc" id="tc1" checked>
+  <input type="radio" name="tc" id="tc2">
+  <input type="radio" name="tc" id="tc3">
+  <input type="radio" name="tc" id="tc4">
+
+  <!-- Arrows -->
+  <label class="tc-arrow tc-prev" for="tc1"></label>
+  <label class="tc-arrow tc-prev" for="tc2"></label>
+  <label class="tc-arrow tc-prev" for="tc3"></label>
+  <label class="tc-arrow tc-next" for="tc2"></label>
+  <label class="tc-arrow tc-next" for="tc3"></label>
+  <label class="tc-arrow tc-next" for="tc4"></label>
+
+  <div class="tc-track">
+    <div class="tc-slide">
+      <p>"Ide írd az első véleményt. Nagyon elégedett vagyok a szolgáltatással!"</p>
+      <p class="tc-name">– Első Személy</p>
+    </div>
+    <div class="tc-slide">
+      <p>"Ide írd a második véleményt. Kiváló minőség és gyors kiszolgálás."</p>
+      <p class="tc-name">– Második Személy</p>
+    </div>
+    <div class="tc-slide">
+      <p>"Ide írd a harmadik véleményt. Mindenkinek ajánlom!"</p>
+      <p class="tc-name">– Harmadik Személy</p>
+    </div>
+    <div class="tc-slide">
+      <p>"Ide írd a negyedik véleményt. Visszatérő vásárló leszek!"</p>
+      <p class="tc-name">– Negyedik Személy</p>
+    </div>
+  </div>
+
+  <div class="tc-dots">
+    <label class="tc-dot" for="tc1"></label>
+    <label class="tc-dot" for="tc2"></label>
+    <label class="tc-dot" for="tc3"></label>
+    <label class="tc-dot" for="tc4"></label>
+  </div>
+</div>
